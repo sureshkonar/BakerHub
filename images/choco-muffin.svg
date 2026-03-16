@@ -1,0 +1,8 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" rx="48" fill="#0f0f0f"/>
+  <circle cx="640" cy="140" r="180" fill="#b5835a" fill-opacity="0.25"/>
+  <circle cx="160" cy="460" r="200" fill="#b5835a" fill-opacity="0.18"/>
+  <rect x="120" y="150" width="560" height="300" rx="36" fill="#b5835a" fill-opacity="0.12" stroke="#b5835a" stroke-opacity="0.5" stroke-width="2"/>
+  <text x="400" y="320" font-family="Inter, Arial, sans-serif" font-size="36" fill="#f6e7d7" text-anchor="middle">Chocolate Muffin</text>
+  <text x="400" y="360" font-family="Inter, Arial, sans-serif" font-size="16" fill="#d4a373" text-anchor="middle">BakerHub Signature</text>
+</svg>
