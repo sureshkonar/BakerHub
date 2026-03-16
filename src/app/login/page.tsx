@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -16,14 +15,11 @@ export default function LoginPage() {
     setStatus("loading");
     setMessage("");
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    await new Promise((resolve) => setTimeout(resolve, 600));
 
-    if (error) {
+    if (!email || !password) {
       setStatus("error");
-      setMessage(error.message);
+      setMessage("Please enter your email and password.");
       return;
     }
 
@@ -36,7 +32,7 @@ export default function LoginPage() {
       <div className="glass-panel w-full rounded-[32px] p-8">
         <h1 className="text-2xl font-semibold text-white">Owner Login</h1>
         <p className="mt-2 text-sm text-white/70">
-          Sign in to manage orders, products, and gallery updates.
+          Demo login for the owner dashboard (no backend auth enabled).
         </p>
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <input
@@ -62,9 +58,7 @@ export default function LoginPage() {
           >
             {status === "loading" ? "Signing in..." : "Login"}
           </button>
-          {message && (
-            <p className="text-sm text-red-300">{message}</p>
-          )}
+          {message && <p className="text-sm text-red-300">{message}</p>}
         </form>
       </div>
     </div>

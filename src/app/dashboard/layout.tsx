@@ -1,19 +1,10 @@
-import { redirect } from "next/navigation";
 import DashboardSidebar from "@/components/DashboardSidebar";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export default async function DashboardLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = createSupabaseServerClient();
-  const { data } = await supabase.auth.getUser();
-
-  if (!data.user) {
-    redirect("/login");
-  }
-
   return (
     <div className="grid min-h-screen grid-cols-1 lg:grid-cols-[260px_1fr]">
       <DashboardSidebar />

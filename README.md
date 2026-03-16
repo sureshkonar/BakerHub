@@ -1,14 +1,13 @@
 # BakerHub
 
-A bakery website for my sister to streamline orders and daily operations. Built as a modern bakery website and business dashboard for a home baker in Tirunelveli using Next.js 14 (App Router), TypeScript, Tailwind CSS, Framer Motion, and Supabase (free tier).
+A bakery website for my sister to streamline orders and daily operations. Built as a modern bakery website and business dashboard for a home baker in Tirunelveli using Next.js 14 (App Router), TypeScript, Tailwind CSS, and Framer Motion.
 
 ## Features
 
 - Product browsing with modern cards and filtering
-- UPI-based order flow with payment screenshot upload
+- UPI-based order flow with payment screenshot upload (demo mode)
 - Gallery with masonry layout
-- Owner-only dashboard with stats, orders, products, gallery, AI helper, analytics
-- Supabase-backed database, auth, and storage
+- Owner dashboard with stats, orders, products, gallery, AI helper, analytics
 
 ## Tech Stack
 
@@ -16,8 +15,7 @@ A bakery website for my sister to streamline orders and daily operations. Built 
 - TypeScript
 - Tailwind CSS v4
 - Framer Motion
-- Supabase (Database, Auth, Storage)
-- Vercel (Hosting)
+- GitHub Pages (Hosting)
 
 ## Getting Started
 
@@ -27,68 +25,22 @@ Install dependencies:
 npm install
 ```
 
-Create `.env.local`:
-
-```bash
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
 Run the dev server:
 
 ```bash
 npm run dev
 ```
 
-## Supabase Setup
+## Deployment (GitHub Pages)
 
-Create the following tables:
+This project is configured for static export.
 
-### products
-- id (uuid, pk)
-- name (text)
-- price (numeric)
-- category (text)
-- description (text)
-- image (text)
-- available_today (boolean)
-- created_at (timestamp)
+```bash
+npm run build
+```
 
-### orders
-- id (uuid, pk)
-- customer_name (text)
-- phone (text)
-- product_id (uuid)
-- quantity (int)
-- pickup_date (date)
-- payment_screenshot (text)
-- status (text)
-- created_at (timestamp)
-
-### gallery
-- id (uuid, pk)
-- image (text)
-- caption (text)
-- created_at (timestamp)
-
-### customers
-- id (uuid, pk)
-- name (text)
-- phone (text)
-- order_count (int)
-
-Storage buckets:
-- `payments` for payment screenshots
-- `gallery` for gallery uploads
-- `products` for product images
-
-## Deployment
-
-- Push to GitHub
-- Import the repo into Vercel
-- Add `.env.local` values in Vercel environment variables
-- Deploy
+Then deploy the `out/` folder to GitHub Pages (recommended via GitHub Actions or manual upload). The `basePath` is set to `/BakerHub` in production.
 
 ## Notes
 
-This project uses a free AI placeholder in the dashboard AI Helper so it can be wired to Ollama, OpenRouter free models, or a local LLM later.
+Orders are demo-only on GitHub Pages. Connect a backend later if you want to store orders and payment screenshots.

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { products } from "@/lib/data";
-import { supabase } from "@/lib/supabase/client";
 
 const initialState = {
   customerName: "",
@@ -35,35 +34,10 @@ export default function OrderForm() {
     setMessage("");
 
     try {
-      let paymentUrl: string | null = null;
-      if (paymentFile) {
-        const filePath = `payments/${Date.now()}-${paymentFile.name}`;
-        const { error: uploadError } = await supabase.storage
-          .from("payments")
-          .upload(filePath, paymentFile, { upsert: false });
+      await new Promise((resolve) => setTimeout(resolve, 700));
 
-        if (uploadError) {
-          throw uploadError;
-        }
-
-        const { data } = supabase.storage
-          .from("payments")
-          .getPublicUrl(filePath);
-        paymentUrl = data.publicUrl;
-      }
-
-      const { error } = await supabase.from("orders").insert({
-        customer_name: form.customerName,
-        phone: form.phone,
-        product_id: form.productId,
-        quantity: Number(form.quantity),
-        pickup_date: form.pickupDate,
-        payment_screenshot: paymentUrl,
-        status: "Pending",
-      });
-
-      if (error) {
-        throw error;
+      if (!paymentFile) {
+        throw new Error("Please upload a payment screenshot.");
       }
 
       setStatus("success");
@@ -185,6 +159,10 @@ export default function OrderForm() {
               {message}
             </p>
           )}
+          <p className="mt-3 text-xs text-white/40">
+            Demo mode: orders are not stored. Connect a backend later to save
+            orders and screenshots.
+          </p>
         </div>
       </div>
     </form>
