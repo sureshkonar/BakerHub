@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { GalleryItem } from "@/lib/data";
+import { withBasePath } from "@/lib/asset";
 
 type GalleryGridProps = {
   items: GalleryItem[];
@@ -15,7 +16,7 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
         >
           <div className="relative h-56">
             <Image
-              src={item.image}
+              src={withBasePath(item.image)}
               alt={item.title}
               fill
               className="object-cover transition duration-500 group-hover:scale-105"

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { products } from "@/lib/data";
+import { withBasePath } from "@/lib/asset";
 
 export default function DashboardProductsPage() {
   return (
@@ -34,7 +35,7 @@ export default function DashboardProductsPage() {
           >
             <div className="flex items-center gap-3">
               <div className="relative h-12 w-12 overflow-hidden rounded-2xl">
-                <Image src={product.image} alt={product.name} fill />
+                <Image src={withBasePath(product.image)} alt={product.name} fill />
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">{product.name}</p>

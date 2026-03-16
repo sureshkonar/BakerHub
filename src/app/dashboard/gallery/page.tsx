@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { galleryItems } from "@/lib/data";
+import { withBasePath } from "@/lib/asset";
 
 export default function DashboardGalleryPage() {
   return (
@@ -25,7 +26,7 @@ export default function DashboardGalleryPage() {
             className="overflow-hidden rounded-3xl border border-white/10 bg-white/5"
           >
             <div className="relative h-48">
-              <Image src={item.image} alt={item.title} fill />
+              <Image src={withBasePath(item.image)} alt={item.title} fill />
             </div>
             <div className="p-4">
               <p className="text-sm font-semibold text-white">{item.title}</p>

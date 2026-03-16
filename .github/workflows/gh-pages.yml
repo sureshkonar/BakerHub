@@ -27,6 +27,7 @@ jobs:
       - name: Build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+          NEXT_PUBLIC_BASE_PATH: "/BakerHub"
         run: npm run build
 
       - name: Disable Jekyll

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { products } from "@/lib/data";
+import { withBasePath } from "@/lib/asset";
 
 const initialState = {
   customerName: "",
@@ -128,7 +129,12 @@ export default function OrderForm() {
           </p>
           <div className="mt-6 flex flex-col items-center gap-3">
             <div className="relative h-40 w-40 overflow-hidden rounded-2xl border border-white/10">
-              <Image src="/upi-qr.svg" alt="UPI QR" fill className="object-cover" />
+              <Image
+                src={withBasePath("/upi-qr.svg")}
+                alt="UPI QR"
+                fill
+                className="object-cover"
+              />
             </div>
             <p className="text-sm text-white/80">UPI ID: bakerhub@upi</p>
             <p className="text-xs text-white/40">Amount is confirmed on call.</p>

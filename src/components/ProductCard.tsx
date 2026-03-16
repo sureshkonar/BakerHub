@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/lib/data";
+import { withBasePath } from "@/lib/asset";
 
 type ProductCardProps = {
   product: Product;
@@ -11,7 +12,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition hover:-translate-y-1 hover:border-white/20">
       <div className="relative h-48 overflow-hidden">
         <Image
-          src={product.image}
+          src={withBasePath(product.image)}
           alt={product.name}
           fill
           className="object-cover transition duration-500 group-hover:scale-105"

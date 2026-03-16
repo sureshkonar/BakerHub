@@ -6,6 +6,7 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import GalleryGrid from "@/components/GalleryGrid";
 import { freshBatch, galleryItems, products, testimonials } from "@/lib/data";
+import { withBasePath } from "@/lib/asset";
 
 export default function HomePage() {
   return (
@@ -53,7 +54,7 @@ export default function HomePage() {
           >
             <div className="relative h-80 overflow-hidden rounded-3xl">
               <Image
-                src="/images/hero-cake.svg"
+                src={withBasePath("/images/hero-cake.svg")}
                 alt="Signature cake"
                 fill
                 className="object-cover"
@@ -128,7 +129,7 @@ export default function HomePage() {
                   className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"
                 >
                   <div className="relative h-16 w-16 overflow-hidden rounded-2xl">
-                    <Image src={item.image} alt={item.name} fill />
+                    <Image src={withBasePath(item.image)} alt={item.name} fill />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white">{item.name}</p>
@@ -157,7 +158,7 @@ export default function HomePage() {
               className="glass-panel overflow-hidden rounded-3xl p-4"
             >
               <div className="relative h-40 overflow-hidden rounded-2xl">
-                <Image src={item.image} alt={item.title} fill />
+                <Image src={withBasePath(item.image)} alt={item.title} fill />
               </div>
               <p className="mt-3 text-sm font-semibold text-white">
                 {item.title}
